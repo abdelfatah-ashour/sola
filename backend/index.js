@@ -1,3 +1,11 @@
+process.on("rejectionHandled", (promise) => {
+  console.log(`Rejected : ${promise}`);
+});
+
+process.on("uncaughtException", (error) => {
+  console.log(`Exception : ${error.message}`);
+});
+
 require("dotenv").config({
   path: "./.env",
 });
@@ -36,6 +44,13 @@ IO.on("connection", (socket) => {
 });
 
 const PORT = process.env.PORT;
+
+app.use("/", (req, res) => {
+  res.status(200).json({
+    message:
+      "welcome in server sola for shared socket io to support real-time communication",
+  });
+});
 
 server.listen(PORT, () => {
   console.log(`server is work on PORT ${PORT}`);
