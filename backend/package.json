@@ -4,8 +4,8 @@
   "description": "the server is run for shared websocket per to per clients",
   "main": "index.js",
   "scripts": {
-    "start": "start ./index.js",
-    "dev": "nodemon ./index.js"
+    "start": "node index",
+    "dev": "nodemon index"
   },
   "keywords": [],
   "author": "",
@@ -14,5 +14,8 @@
     "cors": "^2.8.5",
     "dotenv": "^10.0.0",
     "express": "^4.17.1"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.12"
   }
 }
