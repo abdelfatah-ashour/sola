@@ -1,0 +1,90 @@
+@import "./variables.scss";
+
+.register {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  min-height: calc(100vh - 60px);
+  position: relative;
+}
+
+.box {
+  padding: 8px;
+  border: 2px solid $third-bg-color;
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex-wrap: wrap;
+  align-content: center;
+  justify-content: center;
+  -webkit-border-radius: 8px;
+  -moz-border-radius: 8px;
+  -ms-border-radius: 8px;
+  -o-border-radius: 8px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  -webkit-transform: translate(-50%, -50%);
+  -moz-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  -o-transform: translate(-50%, -50%);
+  ul {
+    width: 100%;
+    li {
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background-color: $third-bg-color;
+      color: $first-font-color;
+      width: 100%;
+      margin-bottom: 8px;
+      border-radius: 4px;
+      -webkit-border-radius: 4px;
+      -moz-border-radius: 4px;
+      -ms-border-radius: 4px;
+      -o-border-radius: 4px;
+    }
+  }
+}
+
+.box-field {
+  width: 100%;
+  padding: 4px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: nowrap;
+  .username-icon {
+    color: $second-font-color;
+    margin: 0 2px;
+  }
+}
+
+.divider {
+  height: 16px !important;
+  width: 100%;
+  border-bottom: 1px solid $third-bg-color;
+  display: block;
+  margin: 32px 0;
+  .or-divider {
+    border: 1px solid $third-bg-color;
+    background-color: #fff;
+    border-radius: 50%;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    -ms-border-radius: 50%;
+    -o-border-radius: 50%;
+    width: 24px;
+    height: 24px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 4px auto;
+    font-size: 10px;
+    font-weight: 700;
+  }
+}

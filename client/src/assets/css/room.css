@@ -1,0 +1,140 @@
+.room {
+  width: 100%;
+  height: calc(100vh - 70px);
+}
+
+.room .box-chat {
+  height: 390px;
+  background-color: #eee;
+  border: 2px solid #000;
+  overflow: hidden;
+  margin: auto;
+}
+
+.room .box-chat .display-messages {
+  height: 100%;
+  height: calc(100% - 70px);
+  padding: 4px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  position: relative;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  overflow-y: auto;
+}
+
+.room .box-chat .display-messages .one-message {
+  background-color: #111;
+  margin-bottom: 4px;
+  padding: 4px;
+}
+
+.room .box-chat .display-messages .from,
+.room .box-chat .display-messages .to {
+  width: auto;
+  padding: 4px;
+  word-break: break-all;
+  font-size: 14px;
+}
+
+.room .box-chat .display-messages .from {
+  background-color: #354f52;
+  color: #fff;
+  border-radius: 4px 0 0 4px;
+  -webkit-border-radius: 4px 0 0 8px;
+  -moz-border-radius: 4px 0 0 8px;
+  -ms-border-radius: 4px 0 0 8px;
+  -o-border-radius: 4px 0 0 8px;
+  -ms-flex-item-align: end;
+  align-self: flex-end;
+}
+
+.room .box-chat .display-messages .to {
+  background-color: #cad2c5;
+  color: #000;
+  border-radius: 0 4px 4px 0;
+  -webkit-border-radius: 0 4px 8px 0;
+  -moz-border-radius: 0 4px 8px 0;
+  -ms-border-radius: 0 4px 8px 0;
+  -o-border-radius: 0 4px 8px 0;
+  -ms-flex-item-align: start;
+  align-self: flex-start;
+}
+
+.room .box-chat .display-messages .typing {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  padding: 2px;
+  border-radius: 6px;
+  -webkit-border-radius: 6px;
+  -moz-border-radius: 6px;
+  -ms-border-radius: 6px;
+  -o-border-radius: 6px;
+  -webkit-animation-name: typeOpacity;
+  animation-name: typeOpacity;
+  -webkit-animation-fill-mode: forwards;
+  animation-fill-mode: forwards;
+  -webkit-animation-iteration-count: infinite;
+  animation-iteration-count: infinite;
+  -webkit-animation-duration: 1s;
+  animation-duration: 1s;
+  -webkit-animation-delay: 0.5s;
+  animation-delay: 0.5s;
+  transition: all 0.5s ease-in-out;
+  -webkit-transition: all 0.5s ease-in-out;
+  -moz-transition: all 0.5s ease-in-out;
+  -ms-transition: all 0.5s ease-in-out;
+  -o-transition: all 0.5s ease-in-out;
+}
+
+.room .box-chat .input-message {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: nowrap;
+  flex-wrap: nowrap;
+  width: 100%;
+  background-color: #999;
+  height: 70px;
+}
+
+.room .box-chat .input-message > textarea {
+  width: 100% !important;
+  line-height: 1.5;
+  height: 100%;
+  word-wrap: break-word;
+  word-break: break-all;
+  outline: 0;
+  border: 0;
+  resize: none;
+  padding: 4px;
+}
+
+@-webkit-keyframes typeOpacity {
+  25% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+  100% {
+    opacity: 0.25;
+  }
+}
+
+@keyframes typeOpacity {
+  25% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+  100% {
+    opacity: 0.25;
+  }
+}
+/*# sourceMappingURL=room.css.map */
