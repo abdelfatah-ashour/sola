@@ -29,14 +29,14 @@ export default function Register() {
   const route = useHistory();
   const dispatch = useDispatch();
 
-  const handleChange = (e) => {
+  const handleChange = e => {
     setUsername(e.target.value);
   };
 
   function handleRegister(_id, username) {
     // already have accounts
     if (_id && !username) {
-      const user = listUser.filter((item) => item._id === _id);
+      const user = listUser.filter(item => item._id === _id);
       dispatch(authAction(LOGIN, user[0]));
       localStorage.setItem("current_user", JSON.stringify([user[0]]));
       route.push("/");
@@ -49,12 +49,11 @@ export default function Register() {
       route.push("/");
     } else {
       alert("🦄 please enter your username");
-      console.log("routed 3");
     }
   }
 
-  const deleteUser = (id) => {
-    const result = listUser.filter((item) => item._id !== id);
+  const deleteUser = id => {
+    const result = listUser.filter(item => item._id !== id);
     setIsUser(result);
     localStorage.setItem("auth_user", JSON.stringify(result));
   };
@@ -76,25 +75,15 @@ export default function Register() {
     <MainLayout title="Register">
       <Grid className="register">
         <Grid item className="box">
-          <Grid
-            container
-            alignItems="flex-end"
-            justifyContent="center"
-            className="box-field"
-          >
+          <Grid container alignItems="flex-end" justifyContent="center" className="box-field">
             <Grid item>
-              <TextField
-                id="input-with-icon-grid"
-                label="Username"
-                onChange={handleChange}
-              />
+              <TextField id="input-with-icon-grid" label="Username" onChange={handleChange} />
             </Grid>
             <Button
               variant="contained"
               color="inherit"
               endIcon={<KeyboardArrowRightIcon />}
-              onClick={() => handleRegister(false, username)}
-            >
+              onClick={() => handleRegister(false, username)}>
               Go
             </Button>
           </Grid>
@@ -106,22 +95,15 @@ export default function Register() {
                 </Typography>
               </Grid>
               <List>
-                {listUser.map((item) => {
+                {listUser.map(item => {
                   return (
-                    <ListItem
-                      key={item._id}
-                      onClick={() => handleRegister(item._id, false)}
-                    >
+                    <ListItem key={item._id} onClick={() => handleRegister(item._id, false)}>
                       <ListItemAvatar>
                         <PersonIcon />
                       </ListItemAvatar>
                       <ListItemText primary={item.username} />
                       <ListItemSecondaryAction>
-                        <IconButton
-                          edge="end"
-                          aria-label="delete"
-                          onClick={() => deleteUser(item._id)}
-                        >
+                        <IconButton edge="end" aria-label="delete" onClick={() => deleteUser(item._id)}>
                           <CloseIcon />
                         </IconButton>
                       </ListItemSecondaryAction>

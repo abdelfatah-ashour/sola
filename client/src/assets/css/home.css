@@ -1,71 +1,33 @@
 .home {
-  height: 100vh;
+  height: calc(100vh - 70px);
+  position: relative;
   background-image: url("../images/bg-home.jpg");
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
   background-attachment: fixed;
-  position: relative;
-  padding: 16px;
 }
-
 .home .box-head,
 .home .create-room {
-  color: #fff;
   z-index: 2;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  background-color: rgba(136, 136, 136, 0.5);
+  flex-direction: column;
+  background-color: rgba(255, 255, 238, 0.5);
+  box-shadow: 0 0 2px 12px rgba(255, 255, 238, 0.5);
   border-radius: 4px;
   padding: 4px;
 }
-
-.home .create-room {
-  padding: 8px;
-}
-
-.home .create-room > * {
-  margin: 8px 0;
-}
-
-.home .create-room .btn-create-room {
-  border: 2px solid #fff;
-  border-radius: 4px;
-}
-
-.home .create-room .btn-create-room button {
-  color: #fff;
-}
-
-.home .create-room .text-url > * {
-  color: #fff;
-  font-weight: 700;
-  font-size: 12px;
-}
-
-.home .create-room .text-url fieldset {
-  border-color: #fff;
-}
-
 .home .box-head {
   text-align: center;
   line-height: 50;
 }
-
 .home .box-head h2 {
   text-transform: uppercase;
   font-size: 5rem;
 }
-
 .home .box-head h3 {
   font-size: 18px;
 }
-
 .home .overlay {
   position: absolute;
   top: 0;
@@ -75,18 +37,15 @@
   z-index: 1;
   background-color: rgba(0, 0, 0, 0.5);
 }
-
 .home .divider {
   height: 16px !important;
   width: 100%;
   border-bottom: 1px solid #fff;
   display: block;
-  color: #000;
 }
-
 .home .divider .or-divider {
-  border: 1px solid #52796f;
   background-color: #fff;
+  box-shadow: 0 0 2px 2 px rgba(255, 255, 238, 0.5);
   border-radius: 50%;
   -webkit-border-radius: 50%;
   -moz-border-radius: 50%;
@@ -94,17 +53,10 @@
   -o-border-radius: 50%;
   width: 24px;
   height: 24px;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  justify-content: center;
+  align-items: center;
   margin: 4px auto;
   font-size: 10px;
   font-weight: 700;
-}
-/*# sourceMappingURL=home.css.map */
+}/*# sourceMappingURL=home.css.map */

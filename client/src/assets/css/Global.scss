@@ -1,4 +1,5 @@
 @import "./variables.scss";
+
 *,
 *::before,
 *::after {
@@ -10,8 +11,4 @@
 body {
   width: 100%;
   height: 100vh;
-}
-
-a {
-  color: $first-font-color;
 }

@@ -8,19 +8,14 @@ import { Socket_Io } from "../App";
 import { useDispatch, useSelector } from "react-redux";
 import { CreateNewMessage } from "../utils/createNewMessage";
 
-import {
-  type,
-  nonType,
-  newMessage,
-  deleteRoom,
-} from "../redux/actions/chatAction";
+import { type, nonType, newMessage, deleteRoom } from "../redux/actions/chatAction";
 
 import { TYPING, NON_TYPING, NEW_MESSAGE, DELETE_ROOM } from "../redux/types";
 
 import "../assets/css/room.css";
 
 export default function Room() {
-  const { Auth, Chat } = useSelector((state) => state);
+  const { Auth, Chat } = useSelector(state => state);
   const dispatch = useDispatch();
   const [room, setRoom] = useState("");
   const [message, setMessage] = useState("");
@@ -29,7 +24,7 @@ export default function Room() {
   const JOIN_ROOM = "JOIN_ROOM";
   const click = "click";
 
-  const handleChange = (e) => {
+  const handleChange = e => {
     setMessage(e.target.value);
     if (e.target.value.length > 0) {
       Socket_Io.emit(TYPING, {
@@ -44,7 +39,7 @@ export default function Room() {
     }
   };
 
-  const handleSendMessage = (typeClick) => {
+  const handleSendMessage = typeClick => {
     const result = message.trim();
     if (typeClick === click || typeClick.keyCode === 13) {
       if (!result) {
@@ -66,26 +61,26 @@ export default function Room() {
     }
   };
 
-  setTimeout(() => {
-    const displayMessages = document.getElementById("displayMessages");
-    displayMessages.scrollTop = displayMessages.scrollHeight;
-  }, 500);
-  // socket.io
   useEffect(() => {
-    Socket_Io.on(TYPING, (payload) => {
+    setTimeout(() => {
+      const displayMessages = document.getElementById("displayMessages");
+      displayMessages.scrollTop = displayMessages.scrollHeight;
+    }, 500);
+  }, []);
+
+  useEffect(() => {
+    Socket_Io.on(TYPING, payload => {
       dispatch(type(TYPING, payload));
     });
 
-    Socket_Io.on(NON_TYPING, (payload) => {
+    Socket_Io.on(NON_TYPING, payload => {
       dispatch(nonType(NON_TYPING, payload));
     });
 
-    Socket_Io.on(NEW_MESSAGE, (payload) => {
+    Socket_Io.on(NEW_MESSAGE, payload => {
       dispatch(newMessage(NEW_MESSAGE, payload));
     });
-
-    return () => {};
-  }, [dispatch]);
+  }, []);
 
   useEffect(() => {
     inputRef.current.focus();
@@ -100,7 +95,7 @@ export default function Room() {
       setRoom("");
       dispatch(deleteRoom(DELETE_ROOM));
     };
-  }, [roomId, dispatch]);
+  }, [roomId]);
 
   return (
     <MainLayout title={room}>
@@ -109,19 +104,13 @@ export default function Room() {
           <Grid className="display-messages" id="displayMessages">
             {Chat.messages
               .sort((a, b) => a.createdAt > b.createdAt)
-              .map((item) => {
+              .map((item, i) => {
                 return (
-                  <OneMessage
-                    from={item.from}
-                    currentUser={Auth._id}
-                    content={item.content}
-                    id={item._id}
-                    key={item._id}
-                  />
+                  <OneMessage from={item.from} currentUser={Auth._id} content={item.content} id={item._id} key={i} />
                 );
               })}
 
-            {Chat.type.filter((item) => item !== Auth._id)[0] && (
+            {Chat.type.filter(item => item !== Auth._id)[0] && (
               <Typography variant="body2" className="typing">
                 typing...
               </Typography>
@@ -136,12 +125,7 @@ export default function Room() {
               value={message}
             />
 
-            <Button
-              variant="contained"
-              color="primary"
-              endIcon={<SendIcon />}
-              onClick={() => handleSendMessage(click)}
-            ></Button>
+            <Button variant="contained" endIcon={<SendIcon />} onClick={() => handleSendMessage(click)}></Button>
           </Grid>
         </Grid>
       </Grid>

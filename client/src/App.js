@@ -1,9 +1,13 @@
-import React, { lazy, Suspense } from "react";
+import React, { lazy, Suspense, useEffect } from "react";
 import { useSelector } from "react-redux";
 import { BrowserRouter, Switch, Route, Redirect } from "react-router-dom";
 import { io } from "socket.io-client";
 import Loading from "./components/Loading";
 import Nav from "./components/Nav";
+import { PageNotFound } from "./pages/PageNotFound";
+const Home = lazy(() => import("./pages/Home"));
+const Register = lazy(() => import("./pages/Register"));
+const Room = lazy(() => import("./pages/Room"));
 
 export const Socket_Io = io(process.env.REACT_APP_API, {
   transports: ["websocket"],
@@ -11,25 +15,26 @@ export const Socket_Io = io(process.env.REACT_APP_API, {
   reconnection: 500,
 });
 
-Socket_Io.on("connect", () => {
-  console.log("connected");
-});
-
-Socket_Io.on("error", (error) => {
-  console.log("Error socket : ", error.message);
-});
-
-Socket_Io.on("disconnected", () => {
-  console.log("disconnected");
-});
-
-const Home = lazy(() => import("./pages/Home"));
-const Register = lazy(() => import("./pages/Register"));
-const Room = lazy(() => import("./pages/Room"));
-const PageNotFound = lazy(() => import("./pages/PageNotFound"));
-
 function App() {
-  const { Auth } = useSelector((state) => state);
+  useEffect(() => {
+    Socket_Io.on("connect", () => {
+      console.log("connect");
+    });
+
+    Socket_Io.on("disconnect", () => {
+      console.log("disconnect");
+    });
+
+    Socket_Io.on("pong", () => {
+      console.log("pong");
+    });
+
+    return () => {
+      Socket_Io.off("connect");
+      Socket_Io.off("disconnect");
+      Socket_Io.off("pong");
+    };
+  }, []);
 
   return (
     <div className="App">
@@ -37,25 +42,15 @@ function App() {
         <Nav />
         <Switch>
           <Route path="/" exact>
-            <Suspense fallback={<Loading />}>
-              {Auth.isLogin ? <Home /> : <Redirect to="/register" />}
-            </Suspense>
+            <Suspense fallback={<Loading />}>{<Home />}</Suspense>
           </Route>
           <Route path="/register">
-            <Suspense fallback={<Loading />}>
-              {Auth.isLogin ? <Redirect to="/" /> : <Register />}
-            </Suspense>
+            <Suspense fallback={<Loading />}>{<Register />}</Suspense>
           </Route>
           <Route path="/room/:roomId">
-            <Suspense fallback={<Loading />}>
-              {Auth.isLogin ? <Room /> : <Redirect to="/register" />}
-            </Suspense>
+            <Suspense fallback={<Loading />}>{<Room />}</Suspense>
           </Route>
-          <Route>
-            <Suspense fallback={<Loading />}>
-              <PageNotFound />
-            </Suspense>
-          </Route>
+          <Route path="*" component={<PageNotFound />} />
         </Switch>
       </BrowserRouter>
     </div>

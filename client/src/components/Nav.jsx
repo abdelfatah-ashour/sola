@@ -11,7 +11,7 @@ import AddIcon from "@material-ui/icons/Add";
 import "../assets/css/nav.css";
 
 export default function ButtonAppBar() {
-  const { Auth } = useSelector((state) => state);
+  const { Auth } = useSelector(state => state);
   const dispatch = useDispatch();
 
   const handleLogout = () => {
@@ -29,21 +29,9 @@ export default function ButtonAppBar() {
       <Grid item className="nav-box">
         <Grid className="menu-list">
           <Link to="/" area-aria-label="home page">
-            <Home /> Home
+            Sola
           </Link>
         </Grid>
-
-        {!Auth.isLogin && (
-          <Link to="/register" aria-label="register page">
-            <AddIcon /> Register
-          </Link>
-        )}
-
-        {Auth.isLogin && (
-          <Link to="/" aria-label="register page" onClick={handleLogout}>
-            <ExitToAppIcon /> LOGOUT
-          </Link>
-        )}
       </Grid>
     </Grid>
   );

@@ -1,0 +1,45 @@
+import { createTheme } from "@material-ui/core";
+
+export const theme = createTheme({
+  palette: {
+    primary: {
+      main: "#6B7FCE",
+      contrastText: "#6B7FCE",
+      900: "#7A8CD3",
+      800: "#8999D8",
+      700: "#97A5DD",
+      600: "#A6B2E2",
+      500: "#B5BFE7",
+      400: "#C4CCEB",
+      300: "#D3D9F0",
+      200: "#E1E5F5",
+      100: "#F0F2FA",
+    },
+    error: {
+      main: "#F22727",
+      contrastText: "#F22727",
+      900: "#F22727",
+      800: "#F33D3D",
+      700: "#F55252",
+      600: "##F66868",
+      500: "#F77D7D",
+      400: "#F99393",
+      300: "#FAA9A9",
+      200: "#FBBEBE",
+      100: "#FCD4D4",
+    },
+    info: {
+      main: "#FCFEFF",
+      contrastText: "#FCFEFF",
+      900: "#FCFEFF",
+      800: "#FCFEFF",
+      700: "#FDFEFF",
+      600: "#FDFEFF",
+      500: "#FDFEFF",
+      400: "#FEFFFF",
+      300: "#FEFFFF",
+      200: "#FEFFFF",
+      100: "#FEFFFF",
+    },
+  },
+});

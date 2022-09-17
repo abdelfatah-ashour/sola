@@ -2,36 +2,29 @@
   width: 100%;
   height: calc(100vh - 70px);
 }
-
 .room .box-chat {
   height: 390px;
   background-color: #eee;
-  border: 2px solid #000;
+  border: 1px solid rgba(47, 62, 70, 0.5);
+  box-shadow: 0 0 10px 1px rgba(202, 210, 197, 0.5);
+  border-radius: 8px;
   overflow: hidden;
   margin: auto;
 }
-
 .room .box-chat .display-messages {
   height: 100%;
   height: calc(100% - 70px);
   padding: 4px;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
   position: relative;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-  -ms-flex-direction: column;
   flex-direction: column;
   overflow-y: auto;
 }
-
 .room .box-chat .display-messages .one-message {
   background-color: #111;
   margin-bottom: 4px;
   padding: 4px;
 }
-
 .room .box-chat .display-messages .from,
 .room .box-chat .display-messages .to {
   width: auto;
@@ -39,7 +32,6 @@
   word-break: break-all;
   font-size: 14px;
 }
-
 .room .box-chat .display-messages .from {
   background-color: #354f52;
   color: #fff;
@@ -48,10 +40,8 @@
   -moz-border-radius: 4px 0 0 8px;
   -ms-border-radius: 4px 0 0 8px;
   -o-border-radius: 4px 0 0 8px;
-  -ms-flex-item-align: end;
   align-self: flex-end;
 }
-
 .room .box-chat .display-messages .to {
   background-color: #cad2c5;
   color: #000;
@@ -60,10 +50,8 @@
   -moz-border-radius: 0 4px 8px 0;
   -ms-border-radius: 0 4px 8px 0;
   -o-border-radius: 0 4px 8px 0;
-  -ms-flex-item-align: start;
   align-self: flex-start;
 }
-
 .room .box-chat .display-messages .typing {
   position: absolute;
   bottom: 0;
@@ -90,20 +78,14 @@
   -ms-transition: all 0.5s ease-in-out;
   -o-transition: all 0.5s ease-in-out;
 }
-
 .room .box-chat .input-message {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -ms-flex-wrap: nowrap;
   flex-wrap: nowrap;
   width: 100%;
-  background-color: #999;
   height: 70px;
 }
-
 .room .box-chat .input-message > textarea {
-  width: 100% !important;
+  flex: 1;
   line-height: 1.5;
   height: 100%;
   word-wrap: break-word;
@@ -125,7 +107,6 @@
     opacity: 0.25;
   }
 }
-
 @keyframes typeOpacity {
   25% {
     opacity: 1;
@@ -136,5 +117,4 @@
   100% {
     opacity: 0.25;
   }
-}
-/*# sourceMappingURL=room.css.map */
+}/*# sourceMappingURL=room.css.map */
